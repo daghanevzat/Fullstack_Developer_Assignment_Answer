@@ -24,15 +24,16 @@ function show(cbindex){ //card-body index
 }
 
 
-function showSearchBox(){
-    var searchBoxControlled = document.getElementById("searchBox").style.display;
+function showSearchBox(index){
+    var searchBox = document.getElementsByName("searchBox")[index];
+    var searchBoxControlled=searchBox.style.display;
     if(searchBoxControlled.length != 0){
         searchBoxControlled = "";
     }
     else{
         searchBoxControlled = "None";
     }
-    document.getElementById("searchBox").style.display=searchBoxControlled;
+    searchBox.style.display=searchBoxControlled;
 }
 function sendquitreq(){
     axios({
@@ -255,8 +256,8 @@ function rentfilter(checkflag){
 }
 
 /*Kitap listeleme sayfasında yazar isimlerine göre sıralama yapmamızı sağlar. */
-function listedBook(searchKey){
-    var listAuthor = document.getElementById("searchAuthor").rows;
+function listedBook(searchKey,tableid="searchAuthor"){
+    var listAuthor = document.getElementById(tableid).rows;
     for(var temp = 0; temp < listAuthor.length ; temp++){
         var tempRow =listAuthor[temp];
         if(searchKey.length > 0 && ! tempRow.cells[2].innerText.toLowerCase().includes(searchKey.toLowerCase())){

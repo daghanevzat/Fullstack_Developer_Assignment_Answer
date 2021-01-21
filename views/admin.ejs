@@ -36,10 +36,10 @@
           <a class="nav-link" href="#" onclick="show(1);">Kitap Ekleme</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#" onclick="show(2); showSearchBox();" >Kitap Listeleme</a>
+          <a class="nav-link" href="#" onclick="show(2); showSearchBox(0);" >Kitap Listeleme</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#" onclick="show(3);">Kitap Kiralama</a>
+            <a class="nav-link" href="#" onclick="show(3);showSearchBox(1);">Kitap Kiralama</a>
           </li>
         <li class="nav-item">
             <a class="nav-link" href="#" onclick="show(4);">Kiralanan Kitapları Listele</a>
@@ -102,7 +102,7 @@
             <div class="container" style ="margin-top:20px;">
                 <div class="card row">
                     <div class="card-header" >Kitap Listesi 
-                        <input id="searchBox" class="form-control" type="text" placeholder="Yazar Ara" style="float: right; width: 30%; display: none;" onkeyup="listedBook(this.value);">
+                        <input name="searchBox" class="form-control" type="text" placeholder="Yazar Ara" style="float: right; width: 30%; display: none;" onkeyup="listedBook(this.value,'adminbooklist');">
                     </div>
                     <div class="card-body">
                         <table class="table table-dark">
@@ -115,7 +115,7 @@
                                     <th scope="col"></th>
                                   </tr>
                                 </thead>
-                                <tbody>
+                                <tbody id="adminbooklist">
                                     <% var counter=0;
                                      booklist.forEach(book =>{  %>
                                         <tr>
@@ -152,7 +152,10 @@
             </div>
             <div class="container" style ="margin-top:20px;">
                 <div class="card row">
-                    <div class="card-header" >Kitap Kiralama</div>
+                    <div class="card-header" >
+                        Kitap Kiralama
+                        <input name="searchBox" class="form-control" type="text" placeholder="Yazar Ara" style="float: right; width: 30%; display: none;" onkeyup="listedBook(this.value);">
+                    </div>
                     <div class="card-body">
                         <table class="table table-dark">
                                 <thead>
